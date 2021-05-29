@@ -1,2 +1,2 @@
 # MSI OF GROUP 6
-Run the mian function to test this code.
+Run the main function to test this code with dataset t.csv.
