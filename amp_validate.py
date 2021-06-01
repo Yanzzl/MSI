@@ -98,7 +98,7 @@ def validator(url):
 
 
 if __name__ == '__main__':
-    csv_path = "t.csv"
+    csv_path = "a.csv"
     fails = 0
     passes = 0
     have_amp_versions = 0
@@ -126,11 +126,17 @@ if __name__ == '__main__':
                 fails = fails + 1
             else:
                 invalid_url = invalid_url + 1
-        print ("total passes: " + str(passes))
-        print ("total fail: " + str(fails))
-        print ("have amp versions: " + str(have_amp_versions))
-        print ("Invalid url: " + str(invalid_url))
-
+            if (row_number % 100 == 0):
+                print("total number: " + str(row_number))
+                print ("total passes: " + str(passes))
+                print ("total fail: " + str(fails))
+                print ("have amp versions: " + str(have_amp_versions))
+                print ("Invalid url: " + str(invalid_url))
+        print("total number: " + str(row_number))
+        print("total passes: " + str(passes))
+        print("total fail: " + str(fails))
+        print("have amp versions: " + str(have_amp_versions))
+        print("Invalid url: " + str(invalid_url))
 
 
 
