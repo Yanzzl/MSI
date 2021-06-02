@@ -193,6 +193,7 @@ def val(url):
         # except:
         #     print("invalid url: {}, timeout ".format(url.get_full_url()))
         #     return -1
+
         soup = BeautifulSoup(html_text, "html.parser")
         # soup = BeautifulSoup(html_text, "lxml")
         tags = soup.find_all('link')
@@ -273,7 +274,7 @@ def val_without_user_agent(url):
 
         # req = urllib.request.Request(url, headers={
         #     'User-Agent': ' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
-        html_text = request.urlopen(url, timeout=5).read()
+        html_text = request.urlopen(url, timeout=5)
 
         # except:
         #     print("invalid url: {}, timeout ".format(url.get_full_url()))
@@ -396,7 +397,7 @@ def getcode(url):
 
 
 if __name__ == '__main__':
-    csv_path = "a.csv"
+    csv_path = "t.csv"
     fails = 0
     passes = 0
     have_amp_versions = 0
@@ -412,11 +413,11 @@ if __name__ == '__main__':
 
             if row_number % 1000 == 0:
                 print("ROW " + str(row_number))
-            startRow = 3000
-            endRow = 3005
+            startRow = 1
+            endRow = 2
             if row_number < startRow:
                 continue
-            if row_number >= endRow:
+            if row_number > endRow:
                 break
             print("-----------------------------------")
             print(url)
