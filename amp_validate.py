@@ -256,7 +256,7 @@ def val(url):
         print("invalid url: {}, timeout ".format(url))
         return -1
     except http.client.HTTPException as e:
-        print("invalid url: {}, HTTPException}".format(url))
+        print("invalid url: {}, HTTPException".format(url))
         return -1
     except:
         print("invalid url: {}, unknown issue".format(url))
@@ -342,7 +342,7 @@ def val_without_user_agent(url):
         print("invalid url: {}, timeout ".format(url))
         return -1
     except  http.client.HTTPException as e:
-        print("invalid url: {}, HTTPException}".format(url))
+        print("invalid url: {}, HTTPException".format(url))
         return -1
     except:
         print("invalid url: {}, unknown issue".format(url))
@@ -396,7 +396,7 @@ def getcode(url):
 
 
 if __name__ == '__main__':
-    csv_path = "t.csv"
+    csv_path = "a.csv"
     fails = 0
     passes = 0
     have_amp_versions = 0
@@ -409,15 +409,22 @@ if __name__ == '__main__':
             # url = row["url"]
             url = row["Domain"]
             row_number += 1
+
             if row_number % 1000 == 0:
                 print("ROW " + str(row_number))
+            startRow = 3000
+            endRow = 3005
+            if row_number < startRow:
+                continue
+            if row_number >= endRow:
+                break
             print("-----------------------------------")
             print(url)
             # print(request.urlopen(url).geturl())
             # print(validator(url))
             code = getcode(url)
             print(code)
-            startRow = 1
+
             if code == 1:
                 with open('passes {}.txt'.format(startRow), "a", encoding="utf-8") as passs:
                     passs.write('row number: {}  url: {}\n'.format(row_number, url))
@@ -435,14 +442,14 @@ if __name__ == '__main__':
             if (row_number % 100 == 0):
                 with open('result {}.txt'.format(startRow), "a", encoding="utf-8") as result:
                     result.write('+++++++++++++++++++++++++++++++++\n')
-                    result.write("total number: " + str(row_number) + '\n')
+                    result.write("total number: " + str(row_number - startRow) + '\n')
                     result.write("total fail: " + str(fails) + '\n')
                     result.write("total fail: " + str(fails) + '\n')
                     result.write("have amp versions: " + str(have_amp_versions) + '\n')
                     result.write("Invalid url: " + str(invalid_url) + '\n')
 
                 print("+++++++++++++++++++++++++++++++++")
-                print("total number: " + str(row_number))
+                print("total number: " + str(row_number - startRow))
                 print("total passes: " + str(passes))
                 print("total fail: " + str(fails))
                 print("have amp versions: " + str(have_amp_versions))
@@ -450,12 +457,12 @@ if __name__ == '__main__':
                 print("+++++++++++++++++++++++++++++++++")
         with open('result {}.txt'.format(startRow), "a", encoding="utf-8") as result:
             result.write('================================================\n')
-            result.write("total number: " + str(row_number) + '\n')
+            result.write("total number: " + str(row_number - startRow) + '\n')
             result.write("total fail: " + str(fails) + '\n')
             result.write("total fail: " + str(fails) + '\n')
             result.write("have amp versions: " + str(have_amp_versions) + '\n')
             result.write("Invalid url: " + str(invalid_url) + '\n')
-        print("total number: " + str(row_number))
+        print("total number: " + str(row_number - startRow))
         print("total passes: " + str(passes))
         print("total fail: " + str(fails))
         print("have amp versions: " + str(have_amp_versions))
