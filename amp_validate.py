@@ -397,7 +397,7 @@ def getcode(url):
 
 
 if __name__ == '__main__':
-    csv_path = "t.csv"
+    csv_path = "m.csv"
     fails = 0
     passes = 0
     have_amp_versions = 0
@@ -413,8 +413,8 @@ if __name__ == '__main__':
 
             if row_number % 1000 == 0:
                 print("ROW " + str(row_number))
-            startRow = 1
-            endRow = 2
+            startRow = 98001
+            endRow = 100000
             if row_number < startRow:
                 continue
             if row_number > endRow:
@@ -444,7 +444,7 @@ if __name__ == '__main__':
                 with open('result {}.txt'.format(startRow), "a", encoding="utf-8") as result:
                     result.write('+++++++++++++++++++++++++++++++++\n')
                     result.write("total number: " + str(row_number - startRow) + '\n')
-                    result.write("total fail: " + str(fails) + '\n')
+                    result.write("total passes: " + str(passes)+ '\n')
                     result.write("total fail: " + str(fails) + '\n')
                     result.write("have amp versions: " + str(have_amp_versions) + '\n')
                     result.write("Invalid url: " + str(invalid_url) + '\n')
@@ -459,7 +459,7 @@ if __name__ == '__main__':
         with open('result {}.txt'.format(startRow), "a", encoding="utf-8") as result:
             result.write('================================================\n')
             result.write("total number: " + str(row_number - startRow) + '\n')
-            result.write("total fail: " + str(fails) + '\n')
+            result.write("total passes: " + str(passes) + '\n')
             result.write("total fail: " + str(fails) + '\n')
             result.write("have amp versions: " + str(have_amp_versions) + '\n')
             result.write("Invalid url: " + str(invalid_url) + '\n')
